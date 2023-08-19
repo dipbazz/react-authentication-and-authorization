@@ -4,6 +4,7 @@ import Authenticated from './pages/authenticated';
 import Unauthenticated from './pages/unauthenticated';
 import AuthenticatedAndUnauthorized from './pages/authenticated-and-unauthorized';
 import AuthenticatedAndAuthorized from './pages/authenticated-and-authorized';
+import CanAccess from './components/CanAccess';
 
 const router = createBrowserRouter([
   {
@@ -16,15 +17,27 @@ const router = createBrowserRouter([
       },
       {
         path: '/authenticated',
-        element: <Authenticated />
+        element: (
+          <CanAccess>
+            <Authenticated />
+          </CanAccess>
+        )
       },
       {
         path: '/authenticated-and-authorized',
-        element: <AuthenticatedAndUnauthorized />
+        element: (
+          <CanAccess>
+            <AuthenticatedAndUnauthorized />
+          </CanAccess>
+        )
       },
       {
         path: '/authenticated-and-unauthorized',
-        element: <AuthenticatedAndAuthorized />
+        element: (
+          <CanAccess>
+            <AuthenticatedAndAuthorized />
+          </CanAccess>
+        )
       },
     ]
   },
