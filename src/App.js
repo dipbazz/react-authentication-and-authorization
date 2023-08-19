@@ -1,8 +1,8 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Index } from './pages';
-import Authorized from './pages/authorized';
-import Unauthorized from './pages/unauthorized';
-import AuthenticatedAndUnAuthorized from './pages/authenticated-and-unauthorized';
+import Authenticated from './pages/authenticated';
+import Unauthenticated from './pages/unauthenticated';
+import AuthenticatedAndUnauthorized from './pages/authenticated-and-unauthorized';
 import AuthenticatedAndAuthorized from './pages/authenticated-and-authorized';
 
 const router = createBrowserRouter([
@@ -11,19 +11,19 @@ const router = createBrowserRouter([
     element: <Index />,
     children: [
       {
-        path: '/authorized',
-        element: <Authorized />
+        path: '/unauthenticated',
+        element: <Unauthenticated />
       },
       {
-        path: '/unauthorized',
-        element: <Unauthorized />
-      },
-      {
-        path: '/authenticated-and-authorized',
-        element: <AuthenticatedAndUnAuthorized />
+        path: '/authenticated',
+        element: <Authenticated />
       },
       {
         path: '/authenticated-and-authorized',
+        element: <AuthenticatedAndUnauthorized />
+      },
+      {
+        path: '/authenticated-and-unauthorized',
         element: <AuthenticatedAndAuthorized />
       },
     ]
@@ -36,7 +36,7 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <RouterProvider router={router} />
     </div>
   );
