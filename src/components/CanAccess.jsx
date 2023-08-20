@@ -6,9 +6,9 @@ const CanAccess = ({
   fallback=<Fallback />,
   children
 }) => {
-  const { user, isAuthenticated } = { user: { permissions: [] }, isAuthenticated: false };
+  const { user, isAuthenticated } = { user: { permissions: ["authorized"] }, isAuthenticated: true };
   const userPermissions = user?.permissions;
-  const isAuthorized = userPermissions?.some((permission) => permissions.includes(permission));
+  const isAuthorized = userPermissions?.some((permission) => permissions?.includes(permission));
 
   if (isAuthenticated && isAuthorized) {
     return <>{children}</>;

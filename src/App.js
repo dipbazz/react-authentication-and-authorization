@@ -26,8 +26,8 @@ const router = createBrowserRouter([
       {
         path: '/authenticated-and-authorized',
         element: (
-          <CanAccess>
-            <AuthenticatedAndUnauthorized />
+          <CanAccess permissions={["authorized"]}>
+            <AuthenticatedAndAuthorized />
           </CanAccess>
         )
       },
@@ -35,7 +35,7 @@ const router = createBrowserRouter([
         path: '/authenticated-and-unauthorized',
         element: (
           <CanAccess>
-            <AuthenticatedAndAuthorized />
+            <AuthenticatedAndUnauthorized />
           </CanAccess>
         )
       },
