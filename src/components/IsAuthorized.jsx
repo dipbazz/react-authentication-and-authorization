@@ -1,20 +1,20 @@
 import React from 'react'
 import Fallback from './Fallback';
 
-const CanAccess = ({
+const IsAuthorized = ({
   permissions,
   fallback=<Fallback />,
   children
 }) => {
-  const { user, isAuthenticated } = { user: { permissions: ["authorized"] }, isAuthenticated: true };
+  const { user } = { user: { permissions: ["authorized"] }, isAuthenticated: true };
   const userPermissions = user?.permissions;
   const isAuthorized = userPermissions?.some((permission) => permissions?.includes(permission));
 
-  if (isAuthenticated && isAuthorized) {
+  if (isAuthorized) {
     return <>{children}</>;
   }
 
   return <>{fallback}</>;
 }
 
-export default CanAccess;
+export default IsAuthorized;

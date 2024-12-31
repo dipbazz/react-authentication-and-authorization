@@ -4,7 +4,10 @@ import Authenticated from './pages/authenticated';
 import Unauthenticated from './pages/unauthenticated';
 import AuthenticatedAndUnauthorized from './pages/authenticated-and-unauthorized';
 import AuthenticatedAndAuthorized from './pages/authenticated-and-authorized';
-import CanAccess from './components/CanAccess';
+import IsAuthenticated from './components/IsAuthenticated';
+import IsAuthorized from './components/IsAuthorized';
+import Login from './pages/auth/Login';
+import Register from './pages/auth/Register';
 
 const router = createBrowserRouter([
   {
@@ -16,27 +19,39 @@ const router = createBrowserRouter([
         element: <Unauthenticated />
       },
       {
+        path: '/login',
+        element: <Login />
+      },
+      {
+        path: '/register',
+        element: <Register />
+      },
+      {
         path: '/authenticated',
         element: (
-          <CanAccess>
+          <IsAuthenticated>
             <Authenticated />
-          </CanAccess>
+          </IsAuthenticated>
         )
       },
       {
         path: '/authenticated-and-authorized',
         element: (
-          <CanAccess permissions={["authorized"]}>
-            <AuthenticatedAndAuthorized />
-          </CanAccess>
+          <IsAuthenticated>
+            <IsAuthorized>
+              <AuthenticatedAndAuthorized />
+            </IsAuthorized>
+          </IsAuthenticated>
         )
       },
       {
         path: '/authenticated-and-unauthorized',
         element: (
-          <CanAccess>
-            <AuthenticatedAndUnauthorized />
-          </CanAccess>
+          <IsAuthenticated>
+            <IsAuthorized>
+              <AuthenticatedAndUnauthorized />
+            </IsAuthorized>
+          </IsAuthenticated>
         )
       },
     ]
