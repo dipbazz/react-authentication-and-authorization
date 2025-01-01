@@ -1,18 +1,22 @@
 import React from 'react'
+import { useAuth } from '../../contexts/AuthProvider';
 
 export default function Login() {
+    const { login } = useAuth();
+
     const handleSubmit = (event) => {
         event?.preventDefault();
-        const username = event?.target?.username?.value;
+        const email = event?.target?.email?.value;
         const password = event?.target?.password?.value;
-        console.log(username, password);
+        console.log(email, password);
+        login({email, password});
     }
     return (
         <div>
             <form onSubmit={handleSubmit}>
                 <label>
-                    <p>Username</p>
-                    <input name='username' required />
+                    <p>email</p>
+                    <input name='email' type='email' required />
                 </label>
                 <label>
                     <p>Password</p>

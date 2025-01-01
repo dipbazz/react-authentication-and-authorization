@@ -38,7 +38,13 @@ server.post('/auth/login', (req, res) => {
       return
     }
     const access_token = createToken({email, password})
-    res.status(200).json({access_token})
+    res.status(200).json({
+      access_token,
+      user: {
+        email,
+        permissions: ['authorized']
+      }
+    })
 })
 
 server.use(/^(?!\/auth).*$/,  (req, res, next) => {
