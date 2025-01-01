@@ -7,7 +7,7 @@ const USER_KEY = "user";
 
 
 export const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState(JSON.parse(localStorage.getItem(USER_KEY, "{}")));
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem(USER_KEY)));
     const [token, setToken] = useState(localStorage.getItem(TOKEN_KEY) || "");
 
     const login = async (data) => {
